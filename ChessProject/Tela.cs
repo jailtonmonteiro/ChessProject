@@ -1,6 +1,7 @@
 ﻿using System;
+using tabuleiro;
 
-namespace ChessProject.tabuleiro
+namespace ChessProject
 {
     internal class Tela
     {
