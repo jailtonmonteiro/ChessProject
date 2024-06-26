@@ -10,15 +10,9 @@ namespace ChessProject
         {
             try
             {
-                Tabuleiro tab = new Tabuleiro(8, 8);
+                PartidaXadrez partida = new PartidaXadrez();
 
-                tab.colocarPeca(new Torre(Cor.Preta, tab), new Posicao(0, 0));
-                tab.colocarPeca(new Torre(Cor.Preta, tab), new Posicao(1, 3));
-                tab.colocarPeca(new Rei(Cor.Preta, tab), new Posicao(0, 6));
-                tab.colocarPeca(new Rainha(Cor.Branca, tab), new Posicao(4, 7));
-                tab.colocarPeca(new Peao(Cor.Branca, tab), new Posicao(5, 5));
-
-                Tela.imprimirTabuleiro(tab);
+                Tela.imprimirTabuleiro(partida.tab);
             }
             catch (Exception ex)
             {
