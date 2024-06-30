@@ -1,21 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace tabuleiro
 {
     internal class Tabuleiro
     {
-        public int linhas {  get; set; }
-        public int colunas { get; set; }
+        public int Linhas {  get; set; }
+        public int Colunas { get; set; }
         private Peca[,] pecas;
 
         public Tabuleiro(int linhas, int colunas)
         {
-            this.linhas = linhas;
-            this.colunas = colunas;
+            this.Linhas = linhas;
+            this.Colunas = colunas;
             pecas = new Peca[linhas, colunas];
         }
 
@@ -26,7 +22,7 @@ namespace tabuleiro
 
         public Peca peca(Posicao pos)
         {
-            return pecas[pos.linha, pos.coluna];
+            return pecas[pos.Linha, pos.Coluna];
         }
 
         //Movimentações das Peças
@@ -36,7 +32,7 @@ namespace tabuleiro
             {
                 throw new TabuleiroException("Já existe uma peça nessa posição!");
             }
-            pecas[pos.linha, pos.coluna] = p;
+            pecas[pos.Linha, pos.Coluna] = p;
             p.posicao = pos;
         }
 
@@ -48,7 +44,7 @@ namespace tabuleiro
             }
             Peca aux = peca(pos);
             aux.posicao = null;
-            pecas[pos.linha, pos.coluna] = null;
+            pecas[pos.Linha, pos.Coluna] = null;
             return aux;
         }
 
@@ -62,7 +58,7 @@ namespace tabuleiro
         public bool posicaoValida(Posicao pos)
         {
 
-            if(pos.linha < 0 || pos.linha >= linhas || pos.coluna < 0 || pos.coluna >= colunas)
+            if(pos.Linha < 0 || pos.Linha >= Linhas || pos.Coluna < 0 || pos.Coluna >= Colunas)
             {
                 return false;
             }

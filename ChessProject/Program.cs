@@ -19,6 +19,7 @@ namespace ChessProject
                     Console.WriteLine();
                     Console.Write("Posição de Origem: ");
                     Posicao origem = Tela.lerPosicaoXadrez().toPosicao();
+                    Console.WriteLine(origem);
 
                     bool[,] posicoesPossiveis = partida.tab.peca(origem).movimentoPossiveis();
 

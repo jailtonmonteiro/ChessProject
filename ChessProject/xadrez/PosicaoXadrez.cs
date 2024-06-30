@@ -5,23 +5,23 @@ namespace xadrez
 {
     internal class PosicaoXadrez
     {
-        public char coluna { get; set; }
-        public int linha { get; set; }
+        public char Coluna { get; set; }
+        public int Linha { get; set; }
 
         public PosicaoXadrez(char coluna, int linha)
         {
-            this.linha = linha;
-            this.coluna = coluna;
+            this.Linha = linha;
+            this.Coluna = coluna;
         }
 
         public Posicao toPosicao()
         {
-            return new Posicao(8 - linha, coluna - 'a');
+            return new Posicao(8 - Linha, Coluna - 'a');
         }
 
         public override string ToString()
         {
-            return "" + coluna + linha;
+            return "" + Coluna + Linha;
         }
     }
 }
