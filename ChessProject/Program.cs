@@ -1,6 +1,5 @@
 ﻿using tabuleiro;
 using xadrez;
-using System;
 
 namespace ChessProject
 {
@@ -17,8 +16,16 @@ namespace ChessProject
                     Console.Clear();
                     Tela.imprimirTabuleiro(partida.tab);
 
+                    Console.WriteLine();
                     Console.Write("Posição de Origem: ");
                     Posicao origem = Tela.lerPosicaoXadrez().toPosicao();
+
+                    bool[,] posicoesPossiveis = partida.tab.peca(origem).movimentoPossiveis();
+
+                    Console.Clear();
+                    Tela.imprimirTabuleiro(partida.tab, posicoesPossiveis);
+
+                    Console.WriteLine();
                     Console.Write("Posição de Destino: ");
                     Posicao destino = Tela.lerPosicaoXadrez().toPosicao();
 

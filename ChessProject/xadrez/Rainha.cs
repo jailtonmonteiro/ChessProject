@@ -3,9 +3,9 @@ using tabuleiro;
 
 namespace xadrez
 {
-    internal class Rainha : Peca
+    internal class Rainha
     {
-        public Rainha(Cor cor, Tabuleiro tab) : base(cor, tab)
+        public Rainha(Cor cor, Tabuleiro tab)
         {
 
         }
