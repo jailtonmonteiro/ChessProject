@@ -24,7 +24,7 @@ namespace ChessProject
                     bool[,] posicoesPossiveis = partida.tab.peca(origem).movimentoPossiveis();
 
                     Console.Clear();
-                    Tela.imprimirTabuleiro(partida.tab, posicoesPossiveis);
+                    Tela.imprimirTabuleiro(partida.tab);
 
                     Console.WriteLine();
                     Console.Write("Posição de Destino: ");

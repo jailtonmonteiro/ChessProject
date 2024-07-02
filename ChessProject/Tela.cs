@@ -19,9 +19,10 @@ namespace ChessProject
             Console.WriteLine("  a b c d e f g h");
         }
 
-        public static void imprimirTabuleiro(Tabuleiro tab, bool[,] posicoesPossiveis)
+        public static void imprimirTabuleiro(Tabuleiro tab, bool[,] posicoePossiveis)
         {
-            ConsoleColor fudoOriginal = Console.BackgroundColor;
+
+            ConsoleColor fundoOriginal = Console.BackgroundColor;
             ConsoleColor fundoAlterado = ConsoleColor.DarkGray;
 
             for (int i = 0; i < tab.Linhas; i++)
@@ -29,21 +30,21 @@ namespace ChessProject
                 Console.Write(8 - i + " ");
                 for (int j = 0; j < tab.Colunas; j++)
                 {
-                    if(posicoesPossiveis[i, j])
+                    if (posicoePossiveis[i, j])
                     {
                         Console.BackgroundColor = fundoAlterado;
                     }
                     else
                     {
-                        Console.BackgroundColor = fudoOriginal;
+                        Console.BackgroundColor = fundoOriginal;
                     }
                     imprimirPeca(tab.peca(i, j));
-                    Console.BackgroundColor = fudoOriginal;
+                    Console.BackgroundColor = fundoOriginal;
                 }
                 Console.WriteLine();
             }
             Console.WriteLine("  a b c d e f g h");
-            Console.BackgroundColor = fudoOriginal;
+            Console.BackgroundColor = fundoOriginal;
         }
 
         public static void imprimirPeca(Peca peca)
@@ -76,7 +77,6 @@ namespace ChessProject
             string s = Console.ReadLine();
             char coluna = s[0];
             int linha = int.Parse(s[1] + "");
-            Console.WriteLine($"{coluna},{linha}");
             return new PosicaoXadrez(coluna, linha);
         }
     }

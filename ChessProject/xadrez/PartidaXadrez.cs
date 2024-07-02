@@ -1,5 +1,4 @@
-﻿using System;
-using tabuleiro;
+﻿using tabuleiro;
 
 namespace xadrez
 {
@@ -28,10 +27,9 @@ namespace xadrez
 
         private void colocarPecas()
         {
-            tab.colocarPeca(new Torre(Cor.Branca, tab), new PosicaoXadrez('a', 2).toPosicao());
+            tab.colocarPeca(new Torre(Cor.Branca, tab), new PosicaoXadrez('c', 1).toPosicao());
             tab.colocarPeca(new Rei(Cor.Branca, tab), new PosicaoXadrez('d', 1).toPosicao());
-            tab.colocarPeca(new Torre(Cor.Branca, tab), new PosicaoXadrez('h', 1).toPosicao());
         }
     }
-    }
+}
 
