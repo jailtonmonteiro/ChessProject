@@ -16,10 +16,10 @@ namespace xadrez
         private bool podeMover(Posicao pos)
         {
             Peca p = tab.peca(pos);
-            return p == null || p.cor != this.cor;
+            return p == null || p.cor != cor;
         }
 
-        public override bool[,] movimentoPossiveis()
+        public override bool[,] movimentosPossiveis()
         {
             bool[,] mat = new bool[tab.Linhas, tab.Colunas];
 
@@ -34,7 +34,7 @@ namespace xadrez
                 {
                     break;
                 }
-                pos.Linha = pos.Linha - 1;
+                pos.definirValores(pos.Linha -1, pos.Coluna);
             }
             //Leste
             pos.definirValores(posicao.Linha, posicao.Coluna + 1);
@@ -45,7 +45,7 @@ namespace xadrez
                 {
                     break;
                 }
-                pos.Coluna = pos.Coluna + 1;
+                pos.definirValores(pos.Linha, pos.Coluna + 1);
             }
             //Sul
             pos.definirValores(posicao.Linha + 1, posicao.Coluna);
@@ -56,7 +56,7 @@ namespace xadrez
                 {
                     break;
                 }
-                pos.Linha = pos.Linha + 1;
+                pos.definirValores(pos.Linha + 1, pos.Coluna);
             }
             //Oeste
             pos.definirValores(posicao.Linha, posicao.Coluna - 1);
@@ -67,7 +67,7 @@ namespace xadrez
                 {
                     break;
                 }
-                pos.Coluna = pos.Coluna - 1;
+                pos.definirValores(pos.Linha, pos.Coluna - 1);
             }
             return mat;
         }

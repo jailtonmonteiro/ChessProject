@@ -1,5 +1,4 @@
-﻿using System;
-using tabuleiro;
+﻿using tabuleiro;
 
 namespace xadrez
 {
@@ -14,7 +13,7 @@ namespace xadrez
             Peca p = tab.peca(pos);
             return p == null || p.cor != cor;
         }
-        public override bool[,] movimentoPossiveis()
+        public override bool[,] movimentosPossiveis()
         {
             bool[,] mat = new bool[tab.Linhas, tab.Colunas];
 
@@ -28,7 +27,7 @@ namespace xadrez
             }
             //Nordeste
             pos.definirValores(posicao.Linha - 1, posicao.Coluna + 1);
-            if(tab.posicaoValida(pos) || podeMover(pos))
+            if (tab.posicaoValida(pos) || podeMover(pos))
             {
                 mat[pos.Linha, pos.Coluna] = true;
             }

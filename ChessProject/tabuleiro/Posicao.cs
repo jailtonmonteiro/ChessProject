@@ -19,5 +19,6 @@ namespace tabuleiro
             this.Linha = linha;
             this.Coluna = coluna;
         }
+
     }
 }
