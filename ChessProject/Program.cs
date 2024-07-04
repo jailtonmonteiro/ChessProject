@@ -35,6 +35,7 @@ namespace ChessProject
                         Console.WriteLine();
                         Console.Write("Posição de Destino: ");
                         Posicao destino = Tela.lerPosicaoXadrez().toPosicao();
+                        partida.validarPosicaoDestino(origem, destino);
 
                         partida.realizaJogada(origem, destino);
                     }
