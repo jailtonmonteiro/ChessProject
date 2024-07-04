@@ -64,6 +64,7 @@ namespace xadrez
         {
 
             tab.colocarPeca(new Torre(Cor.Branca, tab), new PosicaoXadrez('a', 1).toPosicao());
+            tab.colocarPeca(new Cavalo(Cor.Branca, tab), new PosicaoXadrez('d', 4).toPosicao());
             tab.colocarPeca(new Bispo(Cor.Branca, tab), new PosicaoXadrez('c', 1).toPosicao());
             tab.colocarPeca(new Rei(Cor.Branca, tab), new PosicaoXadrez('d', 1).toPosicao());
             tab.colocarPeca(new Rainha(Cor.Branca, tab), new PosicaoXadrez('e', 1).toPosicao());   
