@@ -13,6 +13,10 @@ namespace ChessProject
             Console.WriteLine();
             Console.WriteLine("Turno: " + partida.Turno);
             Console.WriteLine("Aguardando jogada: " + partida.JogadorAtual);
+            if (partida.Xeque)
+            {
+                Console.WriteLine("VOCE ESTÁ EM XEQUE!");
+            }
         }
 
         public static void imprimirPecasCapturadas(PartidaXadrez partida)
