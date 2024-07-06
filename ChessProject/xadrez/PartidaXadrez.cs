@@ -1,4 +1,5 @@
-﻿using tabuleiro;
+﻿using System.Runtime.ExceptionServices;
+using tabuleiro;
 
 namespace xadrez
 {
@@ -46,6 +47,7 @@ namespace xadrez
                 desfazMovimento(origem, destino, pecaCapturada);
                 throw new TabuleiroException("Voce não pode se colocar em xeque!");
             }
+
             if (validarXeque(adversaria(JogadorAtual)))
             {
                 Xeque = true;
@@ -54,9 +56,15 @@ namespace xadrez
             {
                 Xeque = false;
             }
-
-            Turno++;
-            mudaJogador();
+            if (validarXequeMate(adversaria(JogadorAtual)))
+            {
+                Terminada = true;
+            }
+            else
+            {
+                Turno++;
+                mudaJogador();
+            }
         }
 
         public void desfazMovimento(Posicao origem, Posicao destino, Peca pecaCapturada)
@@ -89,7 +97,7 @@ namespace xadrez
 
         public void validarPosicaoDestino(Posicao origem, Posicao destino)
         {
-            if (!Tab.peca(origem).podeMoverPara(destino))
+            if (!Tab.peca(origem).movimentoPossivel(destino))
             {
                 throw new TabuleiroException("Posicao de destino inválida!");
             }
@@ -183,26 +191,46 @@ namespace xadrez
             return false;
         }
 
+        public bool validarXequeMate(Cor cor)
+        {
+            if (!validarXeque(cor))
+            {
+                return false;
+            }
+            foreach (Peca p in pecasEmJogo(cor))
+            {
+                bool[,] mat = p.movimentosPossiveis();
+                for (int i = 0; i < Tab.Linhas; i++)
+                {
+                    for (int j = 0; j < Tab.Colunas; j++)
+                    {
+                        if (mat[i, j])
+                        {
+                            Posicao origem = p.posicao;
+                            Posicao destino = new Posicao(i, j);
+                            Peca pecaCapturada = executaMovimento(origem, destino);
+                            bool testeXeque = validarXeque(cor);
+                            desfazMovimento(origem, destino, pecaCapturada);
+                            if (!testeXeque)
+                            {
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+            return true;
+        }
+
         private void colocarPecas()
         {
-            colocarNovaPeca('a', 1, new Torre(Cor.Branca, Tab));
-            colocarNovaPeca('b', 1, new Cavalo(Cor.Branca, Tab));
-            colocarNovaPeca('c', 1, new Bispo(Cor.Branca, Tab));
+            colocarNovaPeca('c', 1, new Torre(Cor.Branca, Tab));
             colocarNovaPeca('d', 1, new Rei(Cor.Branca, Tab));
-            colocarNovaPeca('e', 1, new Rainha(Cor.Branca, Tab));
-            colocarNovaPeca('f', 1, new Bispo(Cor.Branca, Tab));
-            colocarNovaPeca('g', 1, new Cavalo(Cor.Branca, Tab));
-            colocarNovaPeca('h', 1, new Torre(Cor.Branca, Tab));
-
-
-            colocarNovaPeca('a', 8, new Torre(Cor.Preta, Tab));
-            colocarNovaPeca('b', 8, new Cavalo(Cor.Preta, Tab));
-            colocarNovaPeca('c', 8, new Bispo(Cor.Preta, Tab));
-            colocarNovaPeca('e', 8, new Rainha(Cor.Preta, Tab));
-            colocarNovaPeca('d', 8, new Rei(Cor.Preta, Tab));
-            colocarNovaPeca('f', 8, new Bispo(Cor.Preta, Tab));
-            colocarNovaPeca('g', 8, new Cavalo(Cor.Preta, Tab));
-            colocarNovaPeca('h', 8, new Torre(Cor.Preta, Tab));
+            colocarNovaPeca('h', 7, new Torre(Cor.Branca, Tab));
+            
+            colocarNovaPeca('a', 8, new Rei(Cor.Preta, Tab));
+            colocarNovaPeca('b', 8, new Torre(Cor.Preta, Tab));
+            
         }
     }
 }

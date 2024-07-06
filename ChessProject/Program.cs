@@ -45,8 +45,8 @@ namespace ChessProject
                     }
                 }
 
-
-                Tela.imprimirTabuleiro(partida.Tab);
+                Console.Clear();
+                Tela.imprimirPartida(partida);
             }
             catch (Exception ex)
             {
