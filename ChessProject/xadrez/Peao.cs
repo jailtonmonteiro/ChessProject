@@ -31,7 +31,8 @@ namespace xadrez
             bool[,] mat = new bool[tab.Linhas, tab.Colunas];
 
             Posicao pos = new Posicao(0, 0);
-
+            
+            //Peao Branco
             if (cor == Cor.Branca)
             {
                 pos.definirValores(posicao.Linha - 1, posicao.Coluna);
@@ -40,8 +41,7 @@ namespace xadrez
                     mat[pos.Linha, pos.Coluna] = true;
                 }
                 pos.definirValores(posicao.Linha - 2, posicao.Coluna);
-                Posicao p2 = new Posicao(posicao.Linha - 1, posicao.Coluna);
-                if (tab.posicaoValida(p2) && livre(p2) && tab.posicaoValida(pos) && livre(pos) && qtdMovimentos == 0)
+                if (tab.posicaoValida(pos) && livre(pos) && qtdMovimentos == 0)
                 {
                     mat[pos.Linha, pos.Coluna] = true;
                 }
@@ -55,6 +55,7 @@ namespace xadrez
                 {
                     mat[pos.Linha, pos.Coluna] = true;
                 }
+
             }
             else
             {
@@ -64,8 +65,7 @@ namespace xadrez
                     mat[pos.Linha, pos.Coluna] = true;
                 }
                 pos.definirValores(posicao.Linha + 2, posicao.Coluna);
-                Posicao p2 = new Posicao(posicao.Linha + 1, posicao.Coluna);
-                if (tab.posicaoValida(p2) && livre(p2) && tab.posicaoValida(pos) && livre(pos) && qtdMovimentos == 0)
+                if (tab.posicaoValida(pos) && livre(pos) && qtdMovimentos == 0)
                 {
                     mat[pos.Linha, pos.Coluna] = true;
                 }
@@ -74,7 +74,7 @@ namespace xadrez
                 {
                     mat[pos.Linha, pos.Coluna] = true;
                 }
-                pos.definirValores(posicao.Linha + 1, posicao.Coluna + 1);
+                pos.definirValores(posicao.Linha + 1, posicao.Coluna - 1);
                 if (tab.posicaoValida(pos) && existeInimigo(pos))
                 {
                     mat[pos.Linha, pos.Coluna] = true;
