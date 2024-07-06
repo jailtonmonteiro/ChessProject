@@ -11,15 +11,14 @@ namespace ChessProject
             {
                 PartidaXadrez partida = new PartidaXadrez();
 
-                while (!partida.terminada)
+                while (!partida.Terminada)
                 {
                     try
                     {
                         Console.Clear();
-                        Tela.imprimirTabuleiro(partida.tab);
-                        Console.WriteLine();
-                        Console.WriteLine("Turno: " + partida.turno);
-                        Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
+                        Tela.imprimirPartida(partida);
+
+                        
 
                         Console.WriteLine();
                         Console.Write("Posição de Origem: ");
@@ -27,10 +26,10 @@ namespace ChessProject
                         Console.WriteLine(origem);
                         partida.validarPosicaoOrigem(origem);
 
-                        bool[,] posicoesPossiveis = partida.tab.peca(origem).movimentosPossiveis();
+                        bool[,] posicoesPossiveis = partida.Tab.peca(origem).movimentosPossiveis();
 
                         Console.Clear();
-                        Tela.imprimirTabuleiro(partida.tab, posicoesPossiveis);
+                        Tela.imprimirTabuleiro(partida.Tab, posicoesPossiveis);
 
                         Console.WriteLine();
                         Console.Write("Posição de Destino: ");
@@ -47,7 +46,7 @@ namespace ChessProject
                 }
 
 
-                Tela.imprimirTabuleiro(partida.tab);
+                Tela.imprimirTabuleiro(partida.Tab);
             }
             catch (Exception ex)
             {
