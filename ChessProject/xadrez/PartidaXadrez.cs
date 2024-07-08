@@ -83,10 +83,25 @@ namespace xadrez
         {
             Peca pecaCapturada = executaMovimento(origem, destino);
 
+            Peca p = Tab.peca(destino);
+
             if (validarXeque(JogadorAtual))
             {
                 desfazMovimento(origem, destino, pecaCapturada);
                 throw new TabuleiroException("Voce não pode se colocar em xeque!");
+            }
+
+            //Promoçao Peao
+            if (p is Peao)
+            {
+                if ((p.cor == Cor.Branca && destino.Linha == 0) || (p.cor == Cor.Preta && destino.Linha == 7))
+                {
+                    p = Tab.retiraPeca(destino);
+                    pecas.Remove(p);
+                    Peca rainha = new Rainha(p.cor, Tab);
+                    Tab.colocarPeca(rainha, destino);
+                    pecas.Add(rainha);
+                }
             }
 
             if (validarXeque(adversaria(JogadorAtual)))
@@ -108,7 +123,6 @@ namespace xadrez
             }
 
             //En Passant
-            Peca p = Tab.peca(destino);
             if (p is Peao && (destino.Linha == origem.Linha - 2 || destino.Linha == origem.Linha + 2))
             {
                 vulneravelEnPassant = p;
