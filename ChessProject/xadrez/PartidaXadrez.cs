@@ -36,14 +36,6 @@ namespace xadrez
                 capturadas.Add(pecaCapturada);
             }
 
-            if (p is Rei && destino.Coluna == origem.Coluna + 2) {
-                Posicao origemTorre = new Posicao(origem.Linha, origem.Coluna + 3);
-                Posicao destinoTorre = new Posicao(origem.Linha, origem.Coluna + 1);
-                Peca T = Tab.retiraPeca(origemTorre);
-                T.incrementarMovimentos();
-                Tab.colocarPeca(T, destinoTorre);
-            }
-
             //Roque Pequeno
             if(p is Rei && destino.Coluna == origem.Coluna + 2)
             {
